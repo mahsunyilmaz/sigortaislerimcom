@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Sigorta İsterim | Risk Almayın!</title>
-<meta name="description" content="Trafik, kasko, sağlık ve DASK sigortalarında en uygun teklifi 1 dakikada alın."/>
+<meta name="description" content="Trafik, kasko, sağlık ve DASK sigortalarında en uygun teklifi alın."/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Merriweather:wght@700;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
@@ -12,370 +12,237 @@
 :root{
   --navy:#1e2d6b;
   --navy-dark:#16245a;
-  --navy-light:#2a3d8a;
+  --navy-mid:#253480;
   --orange:#e8500a;
-  --orange-light:#f06330;
+  --orange-l:#f06330;
   --orange-pale:#fff3ed;
-  --cream:#f8f9fc;
-  --smoke:#f0f2f8;
+  --cream:#f5f6fa;
+  --smoke:#eef0f7;
   --muted:#6b7a99;
-  --white:#ffffff;
-  --border:#e2e6f0;
-  --shadow:0 8px 40px rgba(30,45,107,.10);
-  --shadow-lg:0 20px 60px rgba(30,45,107,.16);
-  --radius:14px;
+  --white:#fff;
+  --border:#dde2f0;
+  --r:14px;
+  --sh:0 4px 24px rgba(30,45,107,.10);
+  --sh2:0 12px 48px rgba(30,45,107,.16);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden;}
-h1,h2,h3,.serif{font-family:'Merriweather',serif;}
 
-/* ── NAVBAR ── */
-#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 0;transition:all .3s ease;}
-#navbar.scrolled{background:rgba(30,45,107,.97);backdrop-filter:blur(16px);padding:10px 0;box-shadow:0 2px 24px rgba(0,0,0,.22);}
-.nav-link{color:rgba(255,255,255,.82)!important;font-weight:700;font-size:.9rem;letter-spacing:.3px;padding:8px 14px!important;transition:color .2s;border-radius:8px;}
-.nav-link:hover,.nav-link.active{color:var(--orange-light)!important;}
-.btn-nav-cta{background:var(--orange);color:#fff!important;border-radius:50px;padding:9px 24px!important;font-weight:800;transition:all .2s;}
-.btn-nav-cta:hover{background:var(--orange-light);transform:translateY(-1px);box-shadow:0 6px 18px rgba(232,80,10,.4);}
-.navbar-toggler{border:none;}
+/* ─── NAVBAR ─── */
+#nb{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--navy-dark);padding:0;}
+.nb-inner{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 16px;}
+.nb-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nb-logo-text{font-family:'Merriweather',serif;font-size:1.15rem;font-weight:900;color:#fff;line-height:1;}
+.nb-logo-text span{color:#ff8c5a;}
+.nb-logo-tag{font-size:.65rem;color:rgba(255,255,255,.45);font-style:italic;margin-top:1px;}
+.nb-menu{display:flex;align-items:center;gap:4px;}
+.nb-link{color:rgba(255,255,255,.78);font-weight:700;font-size:.83rem;padding:7px 12px;border-radius:8px;text-decoration:none;transition:color .2s;}
+.nb-link:hover,.nb-link.active{color:#ff8c5a;}
+.nb-cta{background:var(--orange);color:#fff!important;border-radius:50px;padding:7px 18px;font-weight:800;font-size:.83rem;transition:all .2s;}
+.nb-cta:hover{background:var(--orange-l);}
+.nb-ham{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;padding:4px;}
+.nb-drawer{display:none;flex-direction:column;background:var(--navy);padding:8px 0 16px;}
+.nb-drawer a{color:rgba(255,255,255,.78);font-weight:700;font-size:.9rem;padding:12px 20px;text-decoration:none;display:block;}
+.nb-drawer a:hover{color:#ff8c5a;background:rgba(255,255,255,.05);}
+.nb-drawer.open{display:flex;}
+@media(max-width:768px){
+  .nb-menu{display:none;}
+  .nb-ham{display:block;}
+}
 
-/* ── HERO BANNER ── */
-#hero{min-height:100vh;background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 50%,#263580 100%);position:relative;display:flex;align-items:center;overflow:hidden;padding-top:80px;}
-.hero-bg-shape{position:absolute;border-radius:50%;pointer-events:none;}
-.hero-bg-shape.s1{width:700px;height:700px;top:-250px;right:-200px;background:radial-gradient(circle,rgba(232,80,10,.18) 0%,transparent 65%);}
-.hero-bg-shape.s2{width:500px;height:500px;bottom:-200px;left:-150px;background:radial-gradient(circle,rgba(255,255,255,.05) 0%,transparent 65%);}
-.hero-bg-shape.s3{width:300px;height:300px;top:40%;right:38%;background:radial-gradient(circle,rgba(232,80,10,.08) 0%,transparent 65%);}
-.dot-grid{position:absolute;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;}
+/* ─── HERO STRIP ─── */
+#hero-strip{background:linear-gradient(120deg,var(--navy-dark) 0%,var(--navy) 60%,var(--navy-mid) 100%);padding:72px 0 0;position:relative;overflow:hidden;}
+#hero-strip::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(232,80,10,.2) 0%,transparent 65%);pointer-events:none;}
+#hero-strip::after{content:'';position:absolute;bottom:0;left:0;right:0;height:32px;background:var(--cream);border-radius:24px 24px 0 0;}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.055) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
+.hero-text{padding:28px 0 48px;position:relative;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(232,80,10,.2);border:1px solid rgba(232,80,10,.35);color:#ff9a6c;font-size:.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:16px;}
+.hero-h{font-family:'Merriweather',serif;font-size:clamp(1.7rem,4vw,2.9rem);color:#fff;line-height:1.2;margin-bottom:12px;}
+.hero-h .acc{color:#ff8c5a;}
+.hero-sub{color:rgba(255,255,255,.62);font-size:.95rem;line-height:1.75;max-width:520px;margin-bottom:20px;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.78);padding:5px 12px;border-radius:50px;font-size:.75rem;font-weight:700;}
 
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(232,80,10,.18);border:1px solid rgba(232,80,10,.35);color:#ff8c5a;font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:22px;}
-.hero-title{font-family:'Merriweather',serif;font-size:clamp(2.2rem,4.5vw,3.6rem);color:#fff;line-height:1.18;margin-bottom:18px;}
-.hero-title .accent{color:var(--orange-light);}
-.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.65);font-weight:400;line-height:1.75;max-width:480px;margin-bottom:36px;}
-.hero-stats{display:flex;gap:28px;flex-wrap:wrap;}
-.stat-box{text-align:center;}
-.stat-num{font-family:'Merriweather',serif;font-size:1.9rem;font-weight:700;color:var(--orange-light);line-height:1;}
-.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;margin-top:4px;}
+/* ─── PRODUCT TILES ─── */
+#products{padding:32px 0 20px;position:relative;z-index:1;}
+.products-label{font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:14px;text-align:center;}
+.tiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(min-width:576px){.tiles-grid{grid-template-columns:repeat(4,1fr);}}
+@media(min-width:992px){.tiles-grid{grid-template-columns:repeat(6,1fr);}}
+.tile{background:#fff;border-radius:var(--r);padding:18px 10px 14px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .22s;box-shadow:var(--sh);position:relative;overflow:hidden;}
+.tile::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--orange));transform:scaleX(0);transition:transform .25s;}
+.tile:hover{border-color:rgba(30,45,107,.15);transform:translateY(-3px);box-shadow:var(--sh2);}
+.tile:hover::after,.tile.active{transform:scaleX(1);}
+.tile.active{border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,80,10,.15);}
+.tile-ico{font-size:2rem;margin-bottom:8px;display:block;line-height:1;}
+.tile-name{font-size:.75rem;font-weight:800;color:var(--navy);line-height:1.25;}
+.tile.active .tile-name{color:var(--orange);}
 
-/* ── FORM CARD ── */
-.form-card{background:var(--white);border-radius:22px;padding:36px 32px;box-shadow:var(--shadow-lg);}
-.form-card-title{font-family:'Merriweather',serif;font-size:1.35rem;color:var(--navy);margin-bottom:4px;}
-.form-card-sub{font-size:.88rem;color:var(--muted);margin-bottom:24px;}
+/* ─── FORM PANEL ─── */
+#form-panel{background:#fff;border-radius:20px;padding:28px 24px;box-shadow:var(--sh2);margin-bottom:32px;display:none;}
+#form-panel.show{display:block;}
+.fp-header{display:flex;align-items:center;gap:12px;padding-bottom:18px;border-bottom:1.5px solid var(--border);margin-bottom:20px;}
+.fp-icon{font-size:2rem;}
+.fp-title{font-family:'Merriweather',serif;font-size:1.1rem;color:var(--navy);}
+.fp-sub{font-size:.8rem;color:var(--muted);margin-top:2px;}
+.fp-back{margin-left:auto;font-size:.78rem;font-weight:700;color:var(--muted);cursor:pointer;text-decoration:underline;white-space:nowrap;}
+.fp-back:hover{color:var(--navy);}
 
-.ins-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-.ins-pill{flex:0 0 calc(50% - 4px);border:2px solid var(--border);border-radius:10px;padding:10px 12px;cursor:pointer;transition:all .2s;background:#fff;display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:700;color:var(--navy);}
-.ins-pill:hover{border-color:var(--navy);background:var(--smoke);}
-.ins-pill.selected{border-color:var(--orange);background:var(--orange-pale);color:var(--orange);}
-.ins-pill .pill-icon{font-size:1.1rem;}
+.sec-title{font-size:.7rem;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--orange);margin:18px 0 10px;display:flex;align-items:center;gap:6px;}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--border);}
 
-.dynamic-form{display:none;}
-.dynamic-form.active{display:block;}
+.form-label{font-weight:700;font-size:.8rem;color:var(--navy);margin-bottom:4px;}
+.form-control,.form-select{border:2px solid var(--border);border-radius:10px;padding:11px 13px;font-size:.9rem;color:var(--navy);font-family:'Nunito',sans-serif;width:100%;transition:border-color .2s,box-shadow .2s;background:#fff;}
+.form-control:focus,.form-select:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,80,10,.11);outline:none;}
+.radio-group{display:flex;flex-wrap:wrap;gap:8px;}
+.radio-opt{flex:1;min-width:80px;}
+.radio-opt input{display:none;}
+.radio-opt label{display:block;text-align:center;border:2px solid var(--border);border-radius:9px;padding:9px 6px;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s;color:var(--muted);}
+.radio-opt input:checked+label{border-color:var(--orange);background:var(--orange-pale);color:var(--orange);}
+.radio-opt label:hover{border-color:var(--navy);color:var(--navy);}
 
-.form-label{font-weight:700;font-size:.83rem;color:var(--navy);margin-bottom:5px;letter-spacing:.2px;}
-.form-control,.form-select{border:2px solid var(--border);border-radius:10px;padding:10px 13px;font-size:.9rem;color:var(--navy);font-family:'Nunito',sans-serif;transition:border-color .2s,box-shadow .2s;}
-.form-control:focus,.form-select:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,80,10,.12);outline:none;}
-.form-section-title{font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin:18px 0 12px;display:flex;align-items:center;gap:6px;}
-.form-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.btn-submit{background:linear-gradient(135deg,var(--orange),var(--orange-l));color:#fff;border:none;border-radius:12px;padding:15px;font-weight:800;font-size:1rem;width:100%;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;margin-top:20px;}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,80,10,.4);}
+.btn-wa{background:linear-gradient(135deg,#25d366,#1db954);color:#fff;border:none;border-radius:12px;padding:14px;font-weight:800;font-size:.93rem;width:100%;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.4);}
+.or-div{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.78rem;font-weight:700;margin:10px 0;}
+.or-div::before,.or-div::after{content:'';flex:1;height:1px;background:var(--border);}
+.ssl-row{display:flex;align-items:center;justify-content:center;gap:6px;font-size:.72rem;color:var(--muted);margin-top:10px;}
+.success-box{display:none;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1.5px solid #6ee7b7;border-radius:14px;padding:24px;text-align:center;color:#065f46;margin-top:16px;}
+.success-box .s-ico{font-size:2.2rem;display:block;margin-bottom:8px;}
 
-.btn-submit{background:linear-gradient(135deg,var(--orange) 0%,var(--orange-light) 100%);color:#fff;border:none;border-radius:11px;padding:14px 28px;font-weight:800;font-size:1rem;width:100%;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:'Nunito',sans-serif;letter-spacing:.3px;}
-.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,80,10,.42);}
-.btn-whatsapp-form{background:linear-gradient(135deg,#25d366,#1db954);color:#fff;border:none;border-radius:11px;padding:14px 28px;font-weight:800;font-size:.95rem;width:100%;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Nunito',sans-serif;}
-.btn-whatsapp-form:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.4);}
-.divider-or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.8rem;font-weight:600;margin:10px 0;}
-.divider-or::before,.divider-or::after{content:'';flex:1;height:1px;background:var(--border);}
-.ssl-note{display:flex;align-items:center;justify-content:center;gap:6px;font-size:.75rem;color:var(--muted);margin-top:12px;}
-#successMsg{display:none;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1.5px solid #6ee7b7;border-radius:12px;padding:20px;text-align:center;color:#065f46;font-weight:700;margin-top:14px;}
-.step-hint{font-size:.8rem;color:var(--muted);text-align:center;margin-bottom:16px;}
-.step-hint strong{color:var(--orange);}
+/* ─── ABOUT / INFO SECTION ─── */
+#info{padding:48px 0;}
+.info-card{background:#fff;border-radius:var(--r);padding:24px 20px;box-shadow:var(--sh);height:100%;text-align:center;}
+.info-ico{width:52px;height:52px;border-radius:12px;background:var(--smoke);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 14px;}
+.info-card h5{font-size:.97rem;font-weight:800;color:var(--navy);margin-bottom:8px;}
+.info-card p{color:var(--muted);font-size:.85rem;line-height:1.65;}
 
-.sel-header{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--orange-pale);border-radius:10px;margin-bottom:18px;border:1.5px solid rgba(232,80,10,.2);}
-.sel-header .sel-icon{font-size:1.4rem;}
-.sel-header .sel-name{font-weight:800;color:var(--orange);font-size:.95rem;}
-.back-btn{font-size:.8rem;font-weight:700;color:var(--muted);cursor:pointer;text-decoration:underline;margin-left:auto;}
-.back-btn:hover{color:var(--navy);}
+/* ─── TRUST BAR ─── */
+.trust-bar{background:var(--navy);padding:16px 0;}
+.trust-list{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 24px;}
+.trust-it{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.7);font-size:.8rem;font-weight:700;}
+.trust-it i{color:#ff8c5a;font-size:.9rem;}
 
-/* ── TRUST BAR ── */
-.trust-bar{background:var(--navy);padding:22px 0;}
-.trust-item{display:flex;align-items:center;gap:9px;color:rgba(255,255,255,.7);font-size:.85rem;font-weight:700;}
-.trust-item i{color:var(--orange-light);font-size:1rem;}
-
-/* ── SECTIONS ── */
-.section-eyebrow{font-size:.75rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:10px;}
-.section-title{font-family:'Merriweather',serif;font-size:clamp(1.7rem,3vw,2.4rem);color:var(--navy);line-height:1.25;margin-bottom:14px;}
-.section-sub{color:var(--muted);font-size:1rem;line-height:1.75;}
-
-/* ── INSURANCE CARDS ── */
-#sigorta-turleri{background:var(--smoke);padding:90px 0;}
-.ins-card{background:var(--white);border-radius:var(--radius);padding:30px 26px;height:100%;border:2px solid transparent;transition:all .3s;cursor:pointer;position:relative;overflow:hidden;}
-.ins-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--orange));transform:scaleX(0);transition:transform .3s;transform-origin:left;}
-.ins-card:hover{border-color:rgba(30,45,107,.15);box-shadow:var(--shadow);transform:translateY(-5px);}
-.ins-card:hover::after{transform:scaleX(1);}
-.card-ico{width:54px;height:54px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px;background:var(--smoke);}
-.ins-card h4{font-size:1.05rem;font-weight:800;color:var(--navy);margin-bottom:8px;}
-.ins-card p{color:var(--muted);font-size:.875rem;line-height:1.65;margin-bottom:18px;}
-.btn-card{border:2px solid var(--navy);color:var(--navy);background:transparent;border-radius:8px;padding:7px 18px;font-size:.83rem;font-weight:800;cursor:pointer;transition:all .2s;font-family:'Nunito',sans-serif;}
-.btn-card:hover{background:var(--navy);color:#fff;}
-
-/* ── FAQ ── */
-#faq{padding:90px 0;background:var(--cream);}
-.accordion-item{border:2px solid var(--border)!important;border-radius:11px!important;margin-bottom:9px;overflow:hidden;}
-.accordion-button{font-weight:700;color:var(--navy);background:#fff;font-size:.93rem;border-radius:9px!important;}
+/* ─── FAQ ─── */
+#faq{padding:48px 0;background:var(--cream);}
+.sec-eyebrow{font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:8px;}
+.sec-h{font-family:'Merriweather',serif;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--navy);margin-bottom:12px;}
+.accordion-item{border:2px solid var(--border)!important;border-radius:11px!important;margin-bottom:8px;overflow:hidden;}
+.accordion-button{font-weight:700;color:var(--navy);background:#fff;font-size:.9rem;border-radius:9px!important;}
 .accordion-button:not(.collapsed){color:var(--orange);background:var(--orange-pale);box-shadow:none;}
 .accordion-button:focus{box-shadow:none;}
-.accordion-body{color:var(--muted);font-size:.9rem;line-height:1.7;background:#fff;}
+.accordion-body{color:var(--muted);font-size:.88rem;line-height:1.7;background:#fff;}
 
-/* ── PAGES ── */
-.page-section{display:none;}
-.page-section.active{display:block;}
-.page-hero{background:linear-gradient(135deg,var(--navy-dark),var(--navy));padding:130px 0 70px;position:relative;overflow:hidden;}
-.page-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(232,80,10,.15) 0%,transparent 65%);pointer-events:none;}
-.page-hero h1{font-family:'Merriweather',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:#fff;margin-bottom:14px;}
-.page-hero p{color:rgba(255,255,255,.6);font-size:1rem;max-width:520px;line-height:1.7;}
-.page-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(232,80,10,.18);border:1px solid rgba(232,80,10,.3);color:#ff8c5a;font-size:.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:16px;}
+/* ─── PAGES ─── */
+.page{display:none;}
+.page.active{display:block;}
+.page-hero{background:linear-gradient(135deg,var(--navy-dark),var(--navy));padding:90px 0 50px;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,80,10,.15) 0%,transparent 65%);}
+.page-hero h1{font-family:'Merriweather',serif;font-size:clamp(1.6rem,3vw,2.4rem);color:#fff;margin-bottom:10px;}
+.page-hero p{color:rgba(255,255,255,.6);font-size:.95rem;max-width:480px;line-height:1.7;}
+.pg-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,80,10,.18);border:1px solid rgba(232,80,10,.3);color:#ff8c5a;font-size:.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:14px;}
+.vm-box{border-radius:var(--r);padding:28px 24px;}
+.vm-navy{background:linear-gradient(135deg,var(--navy),#2a3d8a);}
+.vm-orange{background:linear-gradient(135deg,var(--orange),var(--orange-l));}
+.vm-lbl{font-size:.68rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.vm-box h3{font-family:'Merriweather',serif;font-size:1.15rem;color:#fff;margin-bottom:10px;}
+.vm-box p{color:rgba(255,255,255,.62);font-size:.87rem;line-height:1.7;}
+.val-card{background:#fff;border-radius:var(--r);padding:24px 20px;text-align:center;box-shadow:var(--sh);height:100%;transition:transform .2s;}
+.val-card:hover{transform:translateY(-3px);}
+.contact-row{background:#fff;border-radius:var(--r);padding:18px;display:flex;align-items:flex-start;gap:12px;box-shadow:var(--sh);margin-bottom:12px;}
+.c-ico{width:42px;height:42px;min-width:42px;background:var(--smoke);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--navy);}
+.contact-row h6{font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.contact-row p,.contact-row a{color:var(--navy);font-weight:700;font-size:.88rem;text-decoration:none;}
+.contact-row a:hover{color:var(--orange);}
+.btn-wa-lg{background:linear-gradient(135deg,#25d366,#1db954);color:#fff!important;border:none;border-radius:11px;padding:14px;font-weight:800;font-size:.92rem;display:flex;align-items:center;gap:8px;text-decoration:none;width:100%;justify-content:center;font-family:'Nunito',sans-serif;transition:all .2s;}
+.btn-wa-lg:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.4);}
+.social-btn{width:40px;height:40px;background:var(--smoke);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--navy);text-decoration:none;transition:all .2s;}
+.social-btn:hover{background:var(--orange);color:#fff;transform:translateY(-2px);}
+.map-ph{background:var(--smoke);border-radius:var(--r);height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:.85rem;border:2px dashed var(--border);}
+#cSuccess{display:none;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1.5px solid #6ee7b7;border-radius:10px;padding:12px;color:#065f46;font-weight:700;text-align:center;margin-top:10px;}
 
-/* ── HAKKIMIZDA ── */
-.vm-card{border-radius:var(--radius);padding:36px 32px;height:100%;}
-.vm-navy{background:linear-gradient(135deg,var(--navy),var(--navy-light));}
-.vm-orange{background:linear-gradient(135deg,var(--orange),var(--orange-light));}
-.vm-label{font-size:.73rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
-.vm-card h3{font-family:'Merriweather',serif;font-size:1.3rem;color:#fff;margin-bottom:12px;}
-.vm-card p{color:rgba(255,255,255,.65);font-size:.9rem;line-height:1.75;}
-.value-card{background:#fff;border-radius:var(--radius);padding:30px 24px;text-align:center;box-shadow:var(--shadow);height:100%;transition:transform .2s;}
-.value-card:hover{transform:translateY(-4px);}
-.value-ico{font-size:2rem;margin-bottom:14px;display:block;}
-.value-card h5{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:8px;}
-.value-card p{color:var(--muted);font-size:.875rem;line-height:1.65;}
+/* ─── FOOTER ─── */
+footer{background:var(--navy-dark);color:rgba(255,255,255,.48);padding:40px 0 20px;}
+.f-brand{font-family:'Merriweather',serif;font-size:1.2rem;font-weight:700;color:#fff;}
+.f-brand span{color:#ff8c5a;}
+.f-tag{font-size:.72rem;color:rgba(255,255,255,.38);font-style:italic;margin-top:2px;}
+.f-links{list-style:none;padding:0;}
+.f-links li{margin-bottom:6px;}
+.f-links a{color:rgba(255,255,255,.42);text-decoration:none;font-size:.83rem;cursor:pointer;transition:color .2s;}
+.f-links a:hover{color:#ff8c5a;}
+.f-bottom{border-top:1px solid rgba(255,255,255,.07);margin-top:28px;padding-top:18px;font-size:.75rem;}
+.f-h{color:rgba(255,255,255,.72);font-size:.75rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;}
 
-/* ── İLETİŞİM ── */
-.contact-card{background:#fff;border-radius:var(--radius);padding:22px 20px;display:flex;align-items:flex-start;gap:14px;box-shadow:0 2px 16px rgba(30,45,107,.07);margin-bottom:14px;}
-.contact-ico{width:46px;height:46px;min-width:46px;background:var(--smoke);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--navy);}
-.contact-card h6{font-size:.73rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
-.contact-card p,.contact-card a{color:var(--navy);font-weight:700;font-size:.93rem;text-decoration:none;}
-.contact-card a:hover{color:var(--orange);}
-.btn-wa-lg{background:linear-gradient(135deg,#25d366,#1db954);color:#fff;border:none;border-radius:11px;padding:15px 28px;font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s;text-decoration:none;width:100%;justify-content:center;font-family:'Nunito',sans-serif;}
-.btn-wa-lg:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.4);color:#fff;}
-.social-link{width:42px;height:42px;background:var(--smoke);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;color:var(--navy);transition:all .2s;text-decoration:none;}
-.social-link:hover{background:var(--orange);color:#fff;transform:translateY(-2px);}
-.map-ph{background:var(--smoke);border-radius:var(--radius);height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:.88rem;border:2px dashed var(--border);}
-.map-ph i{font-size:2.2rem;color:var(--navy);}
-#contactSuccess{display:none;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1.5px solid #6ee7b7;border-radius:11px;padding:14px;color:#065f46;font-weight:700;text-align:center;margin-top:12px;}
-
-/* ── FOOTER ── */
-footer{background:var(--navy-dark);color:rgba(255,255,255,.5);padding:50px 0 26px;}
-.footer-brand{font-family:'Merriweather',serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:4px;}
-.footer-brand span{color:var(--orange-light);}
-.footer-tagline{font-size:.8rem;color:rgba(255,255,255,.4);font-style:italic;}
-.footer-links{list-style:none;padding:0;}
-.footer-links li{margin-bottom:8px;}
-.footer-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.87rem;cursor:pointer;transition:color .2s;}
-.footer-links a:hover{color:var(--orange-light);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:36px;padding-top:22px;font-size:.8rem;}
-
-/* ── FLOAT WA ── */
-.wa-float{position:fixed;bottom:26px;right:26px;z-index:999;background:#25d366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(37,211,102,.5);transition:transform .2s;text-decoration:none;}
-.wa-float:hover{transform:scale(1.1);color:#fff;}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeInUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-.fiu{animation:fadeInUp .6s ease forwards;}
-.d1{animation-delay:.1s;opacity:0;}.d2{animation-delay:.22s;opacity:0;}.d3{animation-delay:.36s;opacity:0;}.d4{animation-delay:.5s;opacity:0;}
-
-@media(max-width:768px){
-  .hero-stats{gap:18px;}
-  .form-card{padding:24px 18px;}
-  .ins-pill{flex:0 0 100%;}
-}
+/* ─── WA FLOAT ─── */
+.wa-fl{position:fixed;bottom:22px;right:20px;z-index:999;background:#25d366;color:#fff;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 18px rgba(37,211,102,.5);transition:transform .2s;text-decoration:none;}
+.wa-fl:hover{transform:scale(1.1);color:#fff;}
 </style>
 </head>
 <body>
 
-<!-- ── NAVBAR ── -->
-<nav id="navbar" class="navbar navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center gap-2" href="#" onclick="showPage('anasayfa')" style="text-decoration:none">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="16" cy="24" rx="8" ry="4" fill="rgba(232,80,10,.3)"/>
-        <path d="M16 4C12 4 10 7 10 10C10 13 12 15 12 17C12 19 11 20 11 22C11 23 13 24 16 24C19 24 21 23 21 22C21 20 20 19 20 17C20 15 22 13 22 10C22 7 20 4 16 4Z" fill="#e8500a"/>
-        <circle cx="14" cy="11" r="1.5" fill="white"/>
-        <circle cx="18" cy="11" r="1.5" fill="white"/>
-        <path d="M14 15H18" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      <span style="font-family:'Merriweather',serif;font-size:1.25rem;font-weight:900;color:#fff">Sigorta <span style="color:#ff8c5a">İsterim</span></span>
+<!-- ─── NAVBAR ─── -->
+<div id="nb">
+  <div class="nb-inner container-fluid" style="max-width:1200px;margin:0 auto">
+    <a class="nb-logo" href="#" onclick="goPage('home')">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><ellipse cx="14" cy="22" rx="7" ry="3.5" fill="rgba(232,80,10,.25)"/><path d="M14 3C10.5 3 8.5 6 8.5 9C8.5 12 10.5 14 10.5 16C10.5 18 9.5 18.5 9.5 20.5C9.5 21.5 11.5 22.5 14 22.5C16.5 22.5 18.5 21.5 18.5 20.5C18.5 18.5 17.5 18 17.5 16C17.5 14 19.5 12 19.5 9C19.5 6 17.5 3 14 3Z" fill="#e8500a"/><circle cx="12" cy="10" r="1.3" fill="white"/><circle cx="16" cy="10" r="1.3" fill="white"/><path d="M12 14H16" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <div>
+        <div class="nb-logo-text">Sigorta <span>İsterim</span></div>
+        <div class="nb-logo-tag">Risk almayın !</div>
+      </div>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <i class="bi bi-list text-white fs-4"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
-        <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('anasayfa')" id="nav-anasayfa">Ana Sayfa</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('hakkimizda')" id="nav-hakkimizda">Biz Kimiz</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('iletisim')" id="nav-iletisim">İletişim</a></li>
-        <li class="nav-item ms-lg-2">
-          <a class="nav-link btn-nav-cta" href="#" onclick="showPage('anasayfa');setTimeout(()=>document.getElementById('form-anchor').scrollIntoView({behavior:'smooth'}),100)">
-            <i class="bi bi-lightning-charge-fill me-1"></i>Teklif Al
-          </a>
-        </li>
-      </ul>
+    <div class="nb-menu">
+      <a class="nb-link" href="#" onclick="goPage('home')" id="nl-home">Ana Sayfa</a>
+      <a class="nb-link" href="#" onclick="goPage('about')" id="nl-about">Biz Kimiz</a>
+      <a class="nb-link" href="#" onclick="goPage('contact')" id="nl-contact">İletişim</a>
+      <a class="nb-link nb-cta ms-2" href="#" onclick="goPage('home');setTimeout(()=>document.getElementById('products').scrollIntoView({behavior:'smooth'}),100)">Teklif Al</a>
     </div>
+    <button class="nb-ham" onclick="toggleMenu()"><i class="bi bi-list"></i></button>
   </div>
-</nav>
+  <div class="nb-drawer" id="nbDrawer">
+    <a href="#" onclick="goPage('home');toggleMenu()">Ana Sayfa</a>
+    <a href="#" onclick="goPage('about');toggleMenu()">Biz Kimiz</a>
+    <a href="#" onclick="goPage('contact');toggleMenu()">İletişim</a>
+    <a href="#" onclick="goPage('home');toggleMenu();setTimeout(()=>document.getElementById('products').scrollIntoView({behavior:'smooth'}),100)" style="color:#ff8c5a">🏷 Teklif Al</a>
+  </div>
+</div>
 
-<!-- ════════════ ANA SAYFA ════════════ -->
-<div id="page-anasayfa" class="page-section active">
 
-<!-- HERO BANNER -->
-<section id="hero">
-  <div class="dot-grid"></div>
-  <div class="hero-bg-shape s1"></div>
-  <div class="hero-bg-shape s2"></div>
-  <div class="hero-bg-shape s3"></div>
-  <div class="container py-5">
-    <div class="row align-items-center g-5">
+<!-- ════════════════════ HOME PAGE ════════════════════ -->
+<div class="page active" id="page-home">
 
-      <!-- LEFT -->
-      <div class="col-lg-6">
-        <div class="hero-eyebrow fiu"><i class="bi bi-shield-check-fill"></i> Lisanslı Sigorta Aracısı</div>
-        <h1 class="hero-title fiu d1">
-          Risk Almayın,<br/>
-          <span class="accent">Güvende Kalın!</span>
-        </h1>
-        <p class="hero-sub fiu d2">
-          Trafik, kasko, sağlık ve DASK sigortalarında 48'den fazla şirketin tekliflerini karşılaştırıp size en uygununu <strong style="color:#fff">1 dakikada</strong> sunuyoruz.
-        </p>
-
-        <div class="d-flex flex-wrap gap-2 mb-4 fiu d3">
-          <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);padding:6px 14px;border-radius:50px;font-size:.8rem;font-weight:700;"><i class="bi bi-check2-circle me-1 text-success"></i>Ücretsiz Teklif</span>
-          <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);padding:6px 14px;border-radius:50px;font-size:.8rem;font-weight:700;"><i class="bi bi-clock me-1" style="color:var(--orange-light)"></i>30 Dk'da Yanıt</span>
-          <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);padding:6px 14px;border-radius:50px;font-size:.8rem;font-weight:700;"><i class="bi bi-lock-fill me-1" style="color:#60d8a8"></i>SSL Güvenli</span>
-          <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);padding:6px 14px;border-radius:50px;font-size:.8rem;font-weight:700;"><i class="bi bi-buildings-fill me-1" style="color:#a0b4ff"></i>48+ Şirket</span>
-        </div>
-
-        <div class="hero-stats fiu d4">
-          <div class="stat-box"><div class="stat-num">12K+</div><div class="stat-lbl">Mutlu Müşteri</div></div>
-          <div class="stat-box"><div class="stat-num">48+</div><div class="stat-lbl">Sigorta Şirketi</div></div>
-          <div class="stat-box"><div class="stat-num">%98</div><div class="stat-lbl">Memnuniyet</div></div>
-          <div class="stat-box"><div class="stat-num">10+</div><div class="stat-lbl">Yıl Deneyim</div></div>
+<!-- HERO STRIP -->
+<section id="hero-strip">
+  <div class="dots"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <div class="hero-text">
+          <div class="hero-eyebrow"><i class="bi bi-shield-check-fill"></i> Lisanslı Sigorta Aracısı</div>
+          <h1 class="hero-h">Risk Almayın,<br/><span class="acc">Güvende Kalın!</span></h1>
+          <p class="hero-sub">30'dan fazla sigorta şirketini karşılaştırın, en uygun teklifi anında alın. Hızlı, güvenli ve şeffaf.</p>
+          <div class="hero-chips">
+            <span class="chip"><i class="bi bi-check2-circle me-1 text-success"></i>Ücretsiz</span>
+            <span class="chip"><i class="bi bi-clock me-1" style="color:#ff8c5a"></i>30 Dk'da Yanıt</span>
+            <span class="chip"><i class="bi bi-lock-fill me-1" style="color:#60d8a8"></i>SSL Güvenli</span>
+            <span class="chip"><i class="bi bi-buildings-fill me-1" style="color:#a0b4ff"></i>30+ Şirket</span>
+          </div>
         </div>
       </div>
-
-      <!-- RIGHT — FORM -->
-      <div class="col-lg-6 fiu d2" id="form-anchor">
-        <div class="form-card">
-          <!-- Step 1 -->
-          <div id="step1">
-            <p class="form-card-title">Ücretsiz Teklif Al</p>
-            <p class="form-card-sub">Önce sigorta türünü seçin, bilgilerini gir — en kısa sürede dönelim.</p>
-            <p class="step-hint">Adım 1/2 — <strong>Sigorta türünü seçin</strong></p>
-            <div class="ins-pills">
-              <div class="ins-pill" onclick="selectType('trafik')"><span class="pill-icon">🚗</span> Trafik Sigortası</div>
-              <div class="ins-pill" onclick="selectType('kasko')"><span class="pill-icon">🛡️</span> Kasko</div>
-              <div class="ins-pill" onclick="selectType('saglik')"><span class="pill-icon">❤️</span> Sağlık Sigortası</div>
-              <div class="ins-pill" onclick="selectType('dask')"><span class="pill-icon">🏠</span> DASK / Deprem</div>
-              <div class="ins-pill" onclick="selectType('konut')"><span class="pill-icon">🏡</span> Konut Sigortası</div>
-              <div class="ins-pill" onclick="selectType('seyahat')"><span class="pill-icon">✈️</span> Seyahat Sigortası</div>
-            </div>
+      <div class="col-lg-5 d-none d-lg-flex justify-content-end pb-4">
+        <div style="display:flex;gap:16px;align-items:flex-end">
+          <div style="background:rgba(255,255,255,.08);border-radius:16px;padding:20px;text-align:center;min-width:100px;">
+            <div style="font-family:'Merriweather',serif;font-size:2rem;font-weight:700;color:#ff8c5a">12K+</div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px">Müşteri</div>
           </div>
-
-          <!-- Step 2 -->
-          <div id="step2" style="display:none">
-            <p class="step-hint">Adım 2/2 — <strong>Bilgilerini gir</strong></p>
-            <div class="sel-header">
-              <span class="sel-icon" id="selIcon"></span>
-              <span class="sel-name" id="selName"></span>
-              <span class="back-btn" onclick="goBack()">← Değiştir</span>
-            </div>
-
-            <div class="form-section-title"><i class="bi bi-person-fill"></i> Kişisel Bilgiler</div>
-            <div class="row g-2 mb-3">
-              <div class="col-6"><label class="form-label">Ad Soyad</label><input type="text" class="form-control" id="f_ad" placeholder="Ad Soyad"/></div>
-              <div class="col-6"><label class="form-label">Telefon</label><input type="tel" class="form-control" id="f_tel" placeholder="05XX XXX XX XX"/></div>
-              <div class="col-12"><label class="form-label">E-posta</label><input type="email" class="form-control" id="f_email" placeholder="ornek@email.com"/></div>
-            </div>
-
-            <!-- TRAFIK -->
-            <div class="dynamic-form" id="form-trafik">
-              <div class="form-section-title"><i class="bi bi-car-front-fill"></i> Araç Bilgileri</div>
-              <div class="row g-2">
-                <div class="col-6"><label class="form-label">Plaka</label><input type="text" class="form-control" placeholder="34 ABC 123"/></div>
-                <div class="col-6"><label class="form-label">Model Yılı</label><input type="number" class="form-control" placeholder="2020"/></div>
-                <div class="col-6"><label class="form-label">Marka</label><input type="text" class="form-control" placeholder="Toyota"/></div>
-                <div class="col-6"><label class="form-label">Model</label><input type="text" class="form-control" placeholder="Corolla"/></div>
-                <div class="col-12"><label class="form-label">Kullanım Amacı</label><select class="form-select"><option>Hususi (Özel)</option><option>Ticari</option><option>Taksi</option></select></div>
-              </div>
-            </div>
-
-            <!-- KASKO -->
-            <div class="dynamic-form" id="form-kasko">
-              <div class="form-section-title"><i class="bi bi-shield-shaded"></i> Araç Bilgileri</div>
-              <div class="row g-2">
-                <div class="col-6"><label class="form-label">Plaka</label><input type="text" class="form-control" placeholder="34 ABC 123"/></div>
-                <div class="col-6"><label class="form-label">Model Yılı</label><input type="number" class="form-control" placeholder="2020"/></div>
-                <div class="col-6"><label class="form-label">Marka</label><input type="text" class="form-control" placeholder="Toyota"/></div>
-                <div class="col-6"><label class="form-label">Model</label><input type="text" class="form-control" placeholder="Corolla"/></div>
-                <div class="col-6"><label class="form-label">Kasko Tipi</label><select class="form-select"><option>Tam Kasko</option><option>Mini Kasko</option><option>Genişletilmiş</option></select></div>
-                <div class="col-6"><label class="form-label">Hasar Durumu</label><select class="form-select"><option>Hasarsız</option><option>1 Hasarlı</option><option>2+ Hasarlı</option></select></div>
-              </div>
-            </div>
-
-            <!-- SAGLIK -->
-            <div class="dynamic-form" id="form-saglik">
-              <div class="form-section-title"><i class="bi bi-heart-pulse-fill"></i> Sağlık Bilgileri</div>
-              <div class="row g-2">
-                <div class="col-6"><label class="form-label">Doğum Tarihi</label><input type="date" class="form-control"/></div>
-                <div class="col-6"><label class="form-label">Cinsiyet</label><select class="form-select"><option>Erkek</option><option>Kadın</option></select></div>
-                <div class="col-12"><label class="form-label">Kişi Sayısı</label><select class="form-select"><option>Sadece Ben</option><option>Ben + Eşim</option><option>Aile (3-4 kişi)</option><option>5+ Kişi</option></select></div>
-                <div class="col-12"><label class="form-label">Kronik Hastalık</label><select class="form-select"><option>Hayır</option><option>Evet</option></select></div>
-                <div class="col-12"><label class="form-label">Plan Tercihi</label><select class="form-select"><option>Temel Plan</option><option>Orta Kapsam</option><option>Kapsamlı Plan</option></select></div>
-              </div>
-            </div>
-
-            <!-- DASK -->
-            <div class="dynamic-form" id="form-dask">
-              <div class="form-section-title"><i class="bi bi-house-fill"></i> Konut Bilgileri</div>
-              <div class="row g-2">
-                <div class="col-6"><label class="form-label">İl</label><input type="text" class="form-control" placeholder="İstanbul"/></div>
-                <div class="col-6"><label class="form-label">İlçe</label><input type="text" class="form-control" placeholder="Beşiktaş"/></div>
-                <div class="col-6"><label class="form-label">Brüt m²</label><input type="number" class="form-control" placeholder="120"/></div>
-                <div class="col-6"><label class="form-label">Yapı Tarzı</label><select class="form-select"><option>Betonarme</option><option>Yığma</option><option>Ahşap</option></select></div>
-                <div class="col-12"><label class="form-label">Bina Yapım Yılı</label><input type="number" class="form-control" placeholder="2005"/></div>
-              </div>
-            </div>
-
-            <!-- KONUT -->
-            <div class="dynamic-form" id="form-konut">
-              <div class="form-section-title"><i class="bi bi-building"></i> Konut Bilgileri</div>
-              <div class="row g-2">
-                <div class="col-6"><label class="form-label">İl</label><input type="text" class="form-control" placeholder="İstanbul"/></div>
-                <div class="col-6"><label class="form-label">İlçe</label><input type="text" class="form-control" placeholder="Beşiktaş"/></div>
-                <div class="col-6"><label class="form-label">Konut Tipi</label><select class="form-select"><option>Daire</option><option>Villa</option><option>Müstakil Ev</option></select></div>
-                <div class="col-6"><label class="form-label">Brüt m²</label><input type="number" class="form-control" placeholder="120"/></div>
-                <div class="col-12"><label class="form-label">Teminat</label><select class="form-select"><option>Yangın + Hırsızlık</option><option>Doğal Afet</option><option>Tam Kapsamlı</option></select></div>
-              </div>
-            </div>
-
-            <!-- SEYAHAT -->
-            <div class="dynamic-form" id="form-seyahat">
-              <div class="form-section-title"><i class="bi bi-airplane-fill"></i> Seyahat Bilgileri</div>
-              <div class="row g-2">
-                <div class="col-6"><label class="form-label">Gidilecek Ülke</label><input type="text" class="form-control" placeholder="Almanya"/></div>
-                <div class="col-6"><label class="form-label">Süre</label><select class="form-select"><option>1-7 Gün</option><option>8-15 Gün</option><option>16-30 Gün</option><option>30+ Gün</option></select></div>
-                <div class="col-6"><label class="form-label">Gidiş Tarihi</label><input type="date" class="form-control"/></div>
-                <div class="col-6"><label class="form-label">Kişi Sayısı</label><input type="number" class="form-control" placeholder="1" min="1"/></div>
-                <div class="col-12"><label class="form-label">Amaç</label><select class="form-select"><option>Turizm</option><option>İş</option><option>Eğitim</option><option>Schengen Vizesi</option></select></div>
-              </div>
-            </div>
-
-            <div class="mt-4">
-              <button class="btn-submit mb-2" onclick="submitForm()"><i class="bi bi-send-fill me-2"></i>Teklif İste</button>
-              <div class="divider-or">ya da</div>
-              <button class="btn-whatsapp-form" onclick="whatsappGonder()"><i class="bi bi-whatsapp fs-5"></i> WhatsApp ile Gönder</button>
-              <div class="ssl-note"><i class="bi bi-lock-fill text-success"></i> 256-bit SSL korumalı · Verileriniz güvende</div>
-            </div>
+          <div style="background:rgba(255,255,255,.08);border-radius:16px;padding:20px;text-align:center;min-width:100px;">
+            <div style="font-family:'Merriweather',serif;font-size:2rem;font-weight:700;color:#ff8c5a">30+</div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px">Şirket</div>
           </div>
-
-          <div id="successMsg">
-            <div style="font-size:2rem;margin-bottom:8px">🎉</div>
-            <strong style="font-size:1.05rem;display:block;margin-bottom:6px">Talebiniz Alındı!</strong>
-            <span style="font-weight:400;font-size:.88rem">Uzmanlarımız en kısa sürede sizi arayacak.</span>
+          <div style="background:rgba(255,255,255,.08);border-radius:16px;padding:20px;text-align:center;min-width:100px;">
+            <div style="font-family:'Merriweather',serif;font-size:2rem;font-weight:700;color:#ff8c5a">%98</div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px">Memnuniyet</div>
           </div>
         </div>
       </div>
@@ -383,89 +250,306 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.5);padding:50px 0 26p
   </div>
 </section>
 
+<!-- PRODUCT TILES + FORM -->
+<section id="products" class="container" style="padding-top:28px">
+  <div class="products-label">Sigorta Türünü Seçin</div>
+  <div class="tiles-grid" id="tilesGrid">
+    <div class="tile" onclick="openForm('trafik')" id="tile-trafik">
+      <span class="tile-ico">🚗</span>
+      <div class="tile-name">Trafik<br/>Sigortası</div>
+    </div>
+    <div class="tile" onclick="openForm('kasko')" id="tile-kasko">
+      <span class="tile-ico">🛡️</span>
+      <div class="tile-name">Kasko</div>
+    </div>
+    <div class="tile" onclick="openForm('saglik')" id="tile-saglik">
+      <span class="tile-ico">❤️</span>
+      <div class="tile-name">Sağlık<br/>Sigortası</div>
+    </div>
+    <div class="tile" onclick="openForm('dask')" id="tile-dask">
+      <span class="tile-ico">🏠</span>
+      <div class="tile-name">DASK<br/>Deprem</div>
+    </div>
+    <div class="tile" onclick="openForm('konut')" id="tile-konut">
+      <span class="tile-ico">🏡</span>
+      <div class="tile-name">Konut<br/>Sigortası</div>
+    </div>
+    <div class="tile" onclick="openForm('seyahat')" id="tile-seyahat">
+      <span class="tile-ico">✈️</span>
+      <div class="tile-name">Seyahat<br/>Sigortası</div>
+    </div>
+  </div>
+
+  <!-- ── FORM PANEL ── -->
+  <div id="form-panel" class="mt-3">
+    <div class="fp-header">
+      <span class="fp-icon" id="fp-icon"></span>
+      <div>
+        <div class="fp-title" id="fp-title"></div>
+        <div class="fp-sub">Bilgileri girin, 30 dakikada size dönelim.</div>
+      </div>
+      <span class="fp-back" onclick="closeForm()">✕ Kapat</span>
+    </div>
+
+    <!-- ── KİŞİSEL BİLGİLER (ortak) ── -->
+    <div class="sec-title"><i class="bi bi-person-fill"></i> Kişisel Bilgiler</div>
+    <div class="row g-2">
+      <div class="col-md-4 col-6">
+        <label class="form-label">Ad Soyad *</label>
+        <input type="text" class="form-control" id="f_ad" placeholder="Ad Soyad"/>
+      </div>
+      <div class="col-md-4 col-6">
+        <label class="form-label">T.C. Kimlik No *</label>
+        <input type="text" class="form-control" id="f_tc" placeholder="xxxxxxxxxxx" maxlength="11"/>
+      </div>
+      <div class="col-md-4 col-6">
+        <label class="form-label">Doğum Tarihi *</label>
+        <input type="date" class="form-control" id="f_dogum"/>
+      </div>
+      <div class="col-md-4 col-6">
+        <label class="form-label">Telefon *</label>
+        <input type="tel" class="form-control" id="f_tel" placeholder="05XX XXX XX XX"/>
+      </div>
+      <div class="col-md-4 col-6">
+        <label class="form-label">E-posta *</label>
+        <input type="email" class="form-control" id="f_email" placeholder="ornek@email.com"/>
+      </div>
+    </div>
+
+    <!-- ── ARAÇ FORMU (trafik + kasko) ── -->
+    <div id="df-arac" class="df" style="display:none">
+      <div class="sec-title"><i class="bi bi-car-front-fill"></i> Araç Bilgileri</div>
+      <div class="row g-2">
+        <div class="col-md-4 col-6">
+          <label class="form-label">Plaka *</label>
+          <input type="text" class="form-control" id="f_plaka" placeholder="34 ABC 123"/>
+        </div>
+        <div class="col-md-4 col-6">
+          <label class="form-label">Ruhsat Seri No</label>
+          <input type="text" class="form-control" id="f_ruhsat" placeholder="AA 000000"/>
+        </div>
+        <div class="col-md-4 col-6">
+          <label class="form-label">Model Yılı *</label>
+          <input type="number" class="form-control" id="f_yil" placeholder="2020" min="1960" max="2025"/>
+        </div>
+        <div class="col-md-4 col-6">
+          <label class="form-label">Marka</label>
+          <input type="text" class="form-control" id="f_marka" placeholder="Toyota"/>
+        </div>
+        <div class="col-md-4 col-6">
+          <label class="form-label">Model</label>
+          <input type="text" class="form-control" id="f_model" placeholder="Corolla"/>
+        </div>
+      </div>
+      <div class="sec-title mt-3"><i class="bi bi-tag-fill"></i> Araç Tipi *</div>
+      <div class="radio-group">
+        <div class="radio-opt"><input type="radio" name="aractipi" id="at1" value="Otomobil"/><label for="at1">🚗 Otomobil</label></div>
+        <div class="radio-opt"><input type="radio" name="aractipi" id="at2" value="Kamyonet"/><label for="at2">🚐 Kamyonet</label></div>
+        <div class="radio-opt"><input type="radio" name="aractipi" id="at3" value="Motosiklet"/><label for="at3">🏍 Motosiklet</label></div>
+        <div class="radio-opt"><input type="radio" name="aractipi" id="at4" value="Minibüs"/><label for="at4">🚌 Minibüs</label></div>
+        <div class="radio-opt"><input type="radio" name="aractipi" id="at5" value="K.Otobüs"/><label for="at5">🚍 K.Otobüs</label></div>
+        <div class="radio-opt"><input type="radio" name="aractipi" id="at6" value="B.Otobüs"/><label for="at6">🚎 B.Otobüs</label></div>
+        <div class="radio-opt"><input type="radio" name="aractipi" id="at7" value="Çekici"/><label for="at7">🚛 Çekici</label></div>
+        <div class="radio-opt"><input type="radio" name="aractipi" id="at8" value="Traktör"/><label for="at8">🚜 Traktör</label></div>
+        <div class="radio-opt"><input type="radio" name="aractipi" id="at9" value="Özel Amaçlı"/><label for="at9">🚑 Özel Amaçlı</label></div>
+      </div>
+      <!-- Kasko-only extras -->
+      <div id="kasko-extras" style="display:none">
+        <div class="row g-2 mt-2">
+          <div class="col-md-6">
+            <label class="form-label">Kasko Tipi</label>
+            <select class="form-select" id="f_kaskoTip">
+              <option>Tam Kasko</option>
+              <option>Mini Kasko</option>
+              <option>Genişletilmiş Kasko</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Hasar Durumu</label>
+            <select class="form-select" id="f_hasar">
+              <option>Hasarsız</option>
+              <option>1 Hasarlı</option>
+              <option>2+ Hasarlı</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SAĞLIK FORMU ── -->
+    <div id="df-saglik" class="df" style="display:none">
+      <div class="sec-title"><i class="bi bi-heart-pulse-fill"></i> Sağlık Bilgileri</div>
+      <div class="row g-2">
+        <div class="col-md-4 col-6">
+          <label class="form-label">Cinsiyet</label>
+          <select class="form-select"><option>Erkek</option><option>Kadın</option></select>
+        </div>
+        <div class="col-md-4 col-6">
+          <label class="form-label">Sigortalı Kişi Sayısı</label>
+          <select class="form-select">
+            <option>Sadece Ben</option>
+            <option>Ben + Eşim</option>
+            <option>Aile (3-4 kişi)</option>
+            <option>5+ Kişi</option>
+          </select>
+        </div>
+        <div class="col-md-4 col-6">
+          <label class="form-label">Kronik Hastalık</label>
+          <select class="form-select"><option>Hayır</option><option>Evet</option></select>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Tercih Ettiğiniz Plan</label>
+          <div class="radio-group">
+            <div class="radio-opt"><input type="radio" name="saglikplan" id="sp1" value="Temel"/><label for="sp1">Temel Plan</label></div>
+            <div class="radio-opt"><input type="radio" name="saglikplan" id="sp2" value="Orta"/><label for="sp2">Orta Kapsam</label></div>
+            <div class="radio-opt"><input type="radio" name="saglikplan" id="sp3" value="Kapsamlı"/><label for="sp3">Kapsamlı</label></div>
+            <div class="radio-opt"><input type="radio" name="saglikplan" id="sp4" value="Fark Etmez"/><label for="sp4">Fark Etmez</label></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DASK FORMU ── -->
+    <div id="df-dask" class="df" style="display:none">
+      <div class="sec-title"><i class="bi bi-house-fill"></i> Konut Bilgileri</div>
+      <div class="row g-2">
+        <div class="col-md-3 col-6"><label class="form-label">İl *</label><input type="text" class="form-control" placeholder="İstanbul"/></div>
+        <div class="col-md-3 col-6"><label class="form-label">İlçe</label><input type="text" class="form-control" placeholder="Beşiktaş"/></div>
+        <div class="col-md-3 col-6"><label class="form-label">Brüt m²</label><input type="number" class="form-control" placeholder="120"/></div>
+        <div class="col-md-3 col-6"><label class="form-label">Yapı Tarzı</label><select class="form-select"><option>Betonarme</option><option>Yığma</option><option>Ahşap</option></select></div>
+        <div class="col-md-4 col-6"><label class="form-label">Bina Yapım Yılı</label><input type="number" class="form-control" placeholder="2005"/></div>
+        <div class="col-md-4 col-6"><label class="form-label">Kat</label><input type="number" class="form-control" placeholder="3"/></div>
+        <div class="col-md-4 col-6"><label class="form-label">Daire No</label><input type="text" class="form-control" placeholder="5"/></div>
+      </div>
+    </div>
+
+    <!-- ── KONUT FORMU ── -->
+    <div id="df-konut" class="df" style="display:none">
+      <div class="sec-title"><i class="bi bi-building"></i> Konut Bilgileri</div>
+      <div class="row g-2">
+        <div class="col-md-3 col-6"><label class="form-label">İl *</label><input type="text" class="form-control" placeholder="İstanbul"/></div>
+        <div class="col-md-3 col-6"><label class="form-label">İlçe</label><input type="text" class="form-control" placeholder="Beşiktaş"/></div>
+        <div class="col-md-3 col-6"><label class="form-label">Konut Tipi</label><select class="form-select"><option>Daire</option><option>Villa</option><option>Müstakil Ev</option></select></div>
+        <div class="col-md-3 col-6"><label class="form-label">Brüt m²</label><input type="number" class="form-control" placeholder="120"/></div>
+        <div class="col-12"><label class="form-label">İstenen Teminat</label>
+          <div class="radio-group">
+            <div class="radio-opt"><input type="radio" name="konuttem" id="kt1" value="Yangın"/><label for="kt1">🔥 Yangın</label></div>
+            <div class="radio-opt"><input type="radio" name="konuttem" id="kt2" value="Hırsızlık"/><label for="kt2">🔒 Hırsızlık</label></div>
+            <div class="radio-opt"><input type="radio" name="konuttem" id="kt3" value="Doğal Afet"/><label for="kt3">🌊 Doğal Afet</label></div>
+            <div class="radio-opt"><input type="radio" name="konuttem" id="kt4" value="Tam Kapsamlı"/><label for="kt4">✅ Tam Kapsam</label></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SEYAHAT FORMU ── -->
+    <div id="df-seyahat" class="df" style="display:none">
+      <div class="sec-title"><i class="bi bi-airplane-fill"></i> Seyahat Bilgileri</div>
+      <div class="row g-2">
+        <div class="col-md-4 col-6"><label class="form-label">Gidilecek Ülke *</label><input type="text" class="form-control" placeholder="Almanya"/></div>
+        <div class="col-md-4 col-6"><label class="form-label">Gidiş Tarihi</label><input type="date" class="form-control"/></div>
+        <div class="col-md-4 col-6"><label class="form-label">Dönüş Tarihi</label><input type="date" class="form-control"/></div>
+        <div class="col-md-4 col-6"><label class="form-label">Kişi Sayısı</label><input type="number" class="form-control" placeholder="1" min="1"/></div>
+        <div class="col-md-4 col-6"><label class="form-label">Seyahat Amacı</label><select class="form-select"><option>Turizm</option><option>İş</option><option>Eğitim</option><option>Schengen Vizesi</option></select></div>
+      </div>
+    </div>
+
+    <!-- ── SUBMIT ── -->
+    <div id="fp-submit">
+      <button class="btn-submit" onclick="doSubmit()"><i class="bi bi-send-fill me-2"></i>Teklif İste</button>
+      <div class="or-div">ya da</div>
+      <button class="btn-wa" onclick="doWhatsapp()"><i class="bi bi-whatsapp fs-5"></i> WhatsApp ile Gönder</button>
+      <div class="ssl-row"><i class="bi bi-lock-fill text-success"></i> 256-bit SSL korumalı — kişisel verileriniz güvende</div>
+    </div>
+    <div class="success-box" id="successBox">
+      <span class="s-ico">🎉</span>
+      <strong style="font-size:1.05rem;display:block;margin-bottom:6px">Talebiniz Alındı!</strong>
+      <span style="font-weight:400;font-size:.85rem">Uzmanlarımız en kısa sürede sizi arayacak.</span>
+    </div>
+  </div><!-- /form-panel -->
+</section>
+
 <!-- TRUST BAR -->
-<div class="trust-bar">
+<div class="trust-bar" style="margin-top:20px">
   <div class="container">
-    <div class="row justify-content-center g-3">
-      <div class="col-auto"><div class="trust-item"><i class="bi bi-patch-check-fill"></i>Lisanslı Aracı</div></div>
-      <div class="col-auto"><div class="trust-item"><i class="bi bi-lock-fill"></i>SSL Güvenli</div></div>
-      <div class="col-auto"><div class="trust-item"><i class="bi bi-clock-fill"></i>30 Dk'da Yanıt</div></div>
-      <div class="col-auto"><div class="trust-item"><i class="bi bi-headset"></i>Ücretsiz Danışmanlık</div></div>
-      <div class="col-auto"><div class="trust-item"><i class="bi bi-buildings-fill"></i>48+ Şirket</div></div>
+    <div class="trust-list">
+      <div class="trust-it"><i class="bi bi-patch-check-fill"></i>Lisanslı Aracı</div>
+      <div class="trust-it"><i class="bi bi-lock-fill"></i>SSL Güvenli</div>
+      <div class="trust-it"><i class="bi bi-clock-fill"></i>30 Dk'da Yanıt</div>
+      <div class="trust-it"><i class="bi bi-headset"></i>Ücretsiz Danışmanlık</div>
+      <div class="trust-it"><i class="bi bi-buildings-fill"></i>30+ Sigorta Şirketi</div>
     </div>
   </div>
 </div>
 
-<!-- SİGORTA TÜRLERİ -->
-<section id="sigorta-turleri">
+<!-- INFO CARDS -->
+<section id="info">
   <div class="container">
-    <div class="text-center mb-5">
-      <div class="section-eyebrow">Sigorta Ürünleri</div>
-      <h2 class="section-title">Size Uygun Sigortayı<br/>Birlikte Bulalım</h2>
-      <p class="section-sub mx-auto" style="max-width:500px">Tek platformdan 48'den fazla sigorta şirketini karşılaştırın, en iyi fiyatı yakalayın.</p>
+    <div class="text-center mb-4">
+      <div class="sec-eyebrow">Neden Biz?</div>
+      <h2 class="sec-h">Sigorta İsterim Farkı</h2>
     </div>
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-4"><div class="ins-card"><div class="card-ico" style="background:rgba(30,45,107,.08);color:var(--navy)"><i class="bi bi-car-front-fill"></i></div><h4>Trafik Sigortası</h4><p>Zorunlu trafik sigortanızı en uygun fiyatla yenileyin. 3. şahıs hasar güvencesi ile yasal yükümlülüğünüzü yerine getirin.</p><button class="btn-card" onclick="scrollToForm('trafik')">Teklif Al →</button></div></div>
-      <div class="col-md-6 col-lg-4"><div class="ins-card"><div class="card-ico" style="background:rgba(232,80,10,.1);color:var(--orange)"><i class="bi bi-shield-shaded"></i></div><h4>Kasko</h4><p>Aracınızı kaza, hırsızlık, yangın ve doğal afetlere karşı tam güvenceye alın. Hasarsızlık indiriminden yararlanın.</p><button class="btn-card" onclick="scrollToForm('kasko')">Teklif Al →</button></div></div>
-      <div class="col-md-6 col-lg-4"><div class="ins-card"><div class="card-ico" style="background:rgba(239,68,68,.09);color:#ef4444"><i class="bi bi-heart-pulse-fill"></i></div><h4>Sağlık Sigortası</h4><p>Bireysel ve aile sağlık sigortasıyla özel hastane güvencesine kavuşun. İhtiyacınıza uygun planı seçin.</p><button class="btn-card" onclick="scrollToForm('saglik')">Teklif Al →</button></div></div>
-      <div class="col-md-6 col-lg-4"><div class="ins-card"><div class="card-ico" style="background:rgba(34,197,94,.09);color:#16a34a"><i class="bi bi-house-fill"></i></div><h4>DASK (Deprem)</h4><p>Zorunlu Deprem Sigortası poliçenizi kolayca yenileyin. Depremin yarattığı hasarlara karşı güvende olun.</p><button class="btn-card" onclick="scrollToForm('dask')">Teklif Al →</button></div></div>
-      <div class="col-md-6 col-lg-4"><div class="ins-card"><div class="card-ico" style="background:rgba(99,102,241,.09);color:#6366f1"><i class="bi bi-building"></i></div><h4>Konut Sigortası</h4><p>Evinizi yangın, hırsızlık, su baskını ve doğal afetlere karşı kapsamlı biçimde koruyun.</p><button class="btn-card" onclick="scrollToForm('konut')">Teklif Al →</button></div></div>
-      <div class="col-md-6 col-lg-4"><div class="ins-card"><div class="card-ico" style="background:rgba(14,165,233,.09);color:#0ea5e9"><i class="bi bi-airplane-fill"></i></div><h4>Seyahat Sigortası</h4><p>Yurt dışı seyahatlerinizde tıbbi acil, bagaj kaybı ve uçuş iptali güvencesiyle yola çıkın.</p><button class="btn-card" onclick="scrollToForm('seyahat')">Teklif Al →</button></div></div>
+    <div class="row g-3">
+      <div class="col-md-3 col-6"><div class="info-card"><div class="info-ico" style="background:rgba(30,45,107,.08);color:var(--navy)"><i class="bi bi-lightning-charge-fill"></i></div><h5>Hızlı Teklif</h5><p>Form doldur, 30 dakikada uzmanımız seni arasın.</p></div></div>
+      <div class="col-md-3 col-6"><div class="info-card"><div class="info-ico" style="background:rgba(232,80,10,.09);color:var(--orange)"><i class="bi bi-buildings-fill"></i></div><h5>30+ Şirket</h5><p>Türkiye'nin önde gelen sigortacılarını karşılaştır.</p></div></div>
+      <div class="col-md-3 col-6"><div class="info-card"><div class="info-ico" style="background:rgba(37,211,102,.1);color:#1db954"><i class="bi bi-currency-dollar"></i></div><h5>En Uygun Fiyat</h5><p>Piyasanın en düşük fiyatını bulmak için çalışıyoruz.</p></div></div>
+      <div class="col-md-3 col-6"><div class="info-card"><div class="info-ico" style="background:rgba(99,102,241,.09);color:#6366f1"><i class="bi bi-headset"></i></div><h5>Ücretsiz Destek</h5><p>Tüm süreçte uzman danışmanlarımız yanında.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- SSS -->
+<!-- FAQ -->
 <section id="faq">
   <div class="container">
-    <div class="row align-items-start g-5">
+    <div class="row g-5 align-items-start">
       <div class="col-lg-4">
-        <div class="section-eyebrow">Bilgi Bankası</div>
-        <h2 class="section-title">Sık Sorulan<br/>Sorular</h2>
-        <p class="section-sub" style="font-size:.92rem">Merak ettikleriniz aşağıda. Başka sorunuz varsa bize yazın.</p>
-        <button class="btn-card mt-4" onclick="showPage('iletisim')" style="border-color:var(--orange);color:var(--orange)">Bize Sorun →</button>
+        <div class="sec-eyebrow">Bilgi Bankası</div>
+        <h2 class="sec-h">Sık Sorulan<br/>Sorular</h2>
+        <p style="color:var(--muted);font-size:.88rem;line-height:1.7">Merak ettiklerinizi aşağıda bulun. Daha fazlası için bize yazın.</p>
+        <button onclick="goPage('contact')" style="margin-top:16px;border:2px solid var(--orange);color:var(--orange);background:transparent;border-radius:8px;padding:8px 20px;font-size:.82rem;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s" onmouseover="this.style.background=getComputedStyle(document.documentElement).getPropertyValue('--orange');this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color=getComputedStyle(document.documentElement).getPropertyValue('--orange')">Bize Sorun →</button>
       </div>
       <div class="col-lg-8">
         <div class="accordion" id="faqAcc">
-          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">Trafik sigortası zorunlu mu?</button></h2><div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc"><div class="accordion-body">Evet, Türkiye'de motorlu taşıt sahipleri için zorunlu trafik sigortası (ZMSS) yasal yükümlülüktür. Sigortasız araç kullanımında ağır idari para cezaları uygulanmaktadır.</div></div></div>
-          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">Kasko ile trafik sigortası farkı nedir?</button></h2><div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Trafik sigortası 3. şahıslara verilen zararları karşılar. Kasko ise kendi aracınıza gelen hasarları (kaza, hırsızlık, yangın, doğal afet) da kapsar. İkisi birbirini tamamlayıcıdır.</div></div></div>
-          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">DASK sigortası nedir, zorunlu mu?</button></h2><div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">DASK (Doğal Afet Sigortaları Kurumu), deprem ve buna bağlı yangın, patlama hasarlarını karşılayan zorunlu bir sigortadır. Türkiye'deki tüm konutlar için yasal yükümlülüktür.</div></div></div>
-          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q4">Teklif almak ücretli mi?</button></h2><div id="q4" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Hayır, tamamen ücretsizdir. Formu doldurun, size en uygun teklifleri karşılaştırıp en kısa sürede sunuyoruz. Satın almak zorunda değilsiniz.</div></div></div>
-          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q5">Ne kadar sürede geri dönüş yapılıyor?</button></h2><div id="q5" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Mesai saatleri içinde gelen başvurulara ortalama 30 dakika, diğer saatlerde ise en geç sabah 09:00'a kadar yanıt verilmektedir.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">Trafik sigortası zorunlu mu?</button></h2><div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc"><div class="accordion-body">Evet, Türkiye'de motorlu taşıt sahipleri için zorunlu trafik sigortası (ZMSS) yasal yükümlülüktür. Sigortasız araç kullanımında ağır para cezaları uygulanır.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">Kasko ile trafik sigortası farkı nedir?</button></h2><div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Trafik sigortası 3. şahıslara verilen zararları karşılar. Kasko ise kendi aracınıza gelen hasarları da kapsar. İkisi birbirini tamamlar.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">DASK nedir, zorunlu mu?</button></h2><div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">DASK (Doğal Afet Sigortaları Kurumu) deprem ve bağlı hasarları karşılar. Türkiye'deki tüm konutlar için yasal zorunluluktur.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q4">Teklif almak ücretli mi?</button></h2><div id="q4" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Hayır, tamamen ücretsizdir. Teklif aldıktan sonra satın almak zorunda değilsiniz.</div></div></div>
+          <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q5">Ne kadar sürede geri dönüş yapılır?</button></h2><div id="q5" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Mesai saatleri içinde 30 dakika, diğer zamanlarda en geç sabah 09:00'a kadar yanıt veriyoruz.</div></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
-</div><!-- /anasayfa -->
+
+</div><!-- /home page -->
 
 
-<!-- ════════════ BİZ KİMİZ ════════════ -->
-<div id="page-hakkimizda" class="page-section">
+<!-- ════════════════════ ABOUT PAGE ════════════════════ -->
+<div class="page" id="page-about">
   <div class="page-hero">
     <div class="container">
-      <div class="page-eyebrow"><i class="bi bi-building"></i> Kurumsal</div>
+      <div class="pg-badge"><i class="bi bi-building"></i> Kurumsal</div>
       <h1>Biz Kimiz?</h1>
       <p>10 yılı aşkın deneyimimiz ve müşteri odaklı yaklaşımımızla Türkiye'nin güvenilir sigorta danışmanıyız.</p>
     </div>
   </div>
-  <section class="py-5 my-2">
+  <section class="py-5">
     <div class="container">
       <div class="row align-items-center g-5">
         <div class="col-lg-6">
-          <div class="section-eyebrow">Hakkımızda</div>
-          <h2 class="section-title">10 Yılı Aşkın<br/>Sigorta Deneyimi</h2>
-          <p style="color:var(--muted);line-height:1.8;font-size:.96rem;margin-bottom:16px">Sigorta İsterim olarak 2013 yılından bu yana müşterilerimize en uygun sigorta çözümlerini sunuyoruz. Türkiye'nin önde gelen 48'den fazla sigorta şirketiyle çalışarak, size en doğru poliçeyi en rekabetçi fiyatla ulaştırıyoruz.</p>
-          <p style="color:var(--muted);line-height:1.8;font-size:.96rem">Lisanslı sigorta aracısı olarak Hazine ve Maliye Bakanlığı denetimi altında, tam şeffaflıkla faaliyet gösteriyoruz.</p>
-          <div class="row g-3 mt-3">
-            <div class="col-6"><div class="p-3 rounded-3" style="background:var(--smoke);text-align:center"><div style="font-family:'Merriweather',serif;font-size:1.7rem;font-weight:700;color:var(--navy)">12.000+</div><div style="font-size:.78rem;color:var(--muted);margin-top:4px">Mutlu Müşteri</div></div></div>
-            <div class="col-6"><div class="p-3 rounded-3" style="background:var(--smoke);text-align:center"><div style="font-family:'Merriweather',serif;font-size:1.7rem;font-weight:700;color:var(--orange)">10+ Yıl</div><div style="font-size:.78rem;color:var(--muted);margin-top:4px">Sektör Deneyimi</div></div></div>
+          <div class="sec-eyebrow">Hakkımızda</div>
+          <h2 class="sec-h">10 Yılı Aşkın<br/>Sigorta Tecrübesi</h2>
+          <p style="color:var(--muted);line-height:1.8;font-size:.93rem;margin-bottom:14px">Sigorta İsterim olarak 2013 yılından bu yana müşterilerimize en uygun sigorta çözümlerini sunuyoruz. Türkiye'nin önde gelen 30'dan fazla sigorta şirketiyle çalışarak size en doğru poliçeyi en rekabetçi fiyatla ulaştırıyoruz.</p>
+          <p style="color:var(--muted);line-height:1.8;font-size:.93rem">Lisanslı sigorta aracısı olarak Hazine ve Maliye Bakanlığı denetimi altında, tam şeffaflıkla faaliyet gösteriyoruz.</p>
+          <div class="row g-2 mt-3">
+            <div class="col-6"><div class="p-3 rounded-3" style="background:var(--smoke);text-align:center"><div style="font-family:'Merriweather',serif;font-size:1.6rem;font-weight:700;color:var(--navy)">12.000+</div><div style="font-size:.72rem;color:var(--muted);margin-top:3px">Mutlu Müşteri</div></div></div>
+            <div class="col-6"><div class="p-3 rounded-3" style="background:var(--smoke);text-align:center"><div style="font-family:'Merriweather',serif;font-size:1.6rem;font-weight:700;color:var(--orange)">10+ Yıl</div><div style="font-size:.72rem;color:var(--muted);margin-top:3px">Deneyim</div></div></div>
           </div>
         </div>
         <div class="col-lg-6">
           <div class="row g-3">
-            <div class="col-12"><div class="vm-card vm-navy"><div class="vm-label" style="color:rgba(255,255,255,.5)">Vizyonumuz</div><h3>Hızlı, Güvenli ve Şeffaf Sigorta</h3><p>Dijital dünyada sigorta süreçlerini herkes için kolaylaştırmak; doğru poliçeye anında ve güvenli şekilde ulaşılmasını sağlamak.</p></div></div>
-            <div class="col-12"><div class="vm-card vm-orange"><div class="vm-label" style="color:rgba(255,255,255,.6)">Misyonumuz</div><h3>En Uygun Poliçeyi En Kısa Sürede</h3><p>Müşteriye en uygun poliçeyi, en kısa sürede ve tam şeffaflıkla ulaştırmak. Karmaşık sigorta dünyasını herkes için anlaşılır kılmak.</p></div></div>
+            <div class="col-12"><div class="vm-box vm-navy"><div class="vm-lbl" style="color:rgba(255,255,255,.45)">Vizyonumuz</div><h3>Hızlı, Güvenli ve Şeffaf Sigorta</h3><p>Sigorta süreçlerini dijitalleştirerek herkese anında, güvenli ve şeffaf erişim sağlamak.</p></div></div>
+            <div class="col-12"><div class="vm-box vm-orange"><div class="vm-lbl" style="color:rgba(255,255,255,.55)">Misyonumuz</div><h3>En Uygun Poliçeyi En Kısa Sürede</h3><p>Müşteriye doğru poliçeyi, en kısa sürede ve tam şeffaflıkla ulaştırmak.</p></div></div>
           </div>
         </div>
       </div>
@@ -473,53 +557,56 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.5);padding:50px 0 26p
   </section>
   <section class="py-5" style="background:var(--smoke)">
     <div class="container">
-      <div class="text-center mb-5"><div class="section-eyebrow">Değerlerimiz</div><h2 class="section-title">Temel İlkelerimiz</h2></div>
-      <div class="row g-4">
-        <div class="col-md-4"><div class="value-card"><span class="value-ico">🤝</span><h5>Güven</h5><p>Her tavsiyemiz sizin çıkarınız için. Müşterilerimize tam dürüstlük ve şeffaflıkla yaklaşıyoruz.</p></div></div>
-        <div class="col-md-4"><div class="value-card"><span class="value-ico">🔍</span><h5>Şeffaflık</h5><p>Komisyon yapımızdan poliçe detaylarına kadar her şey açık. Gizli ücret yok, sürpriz yok.</p></div></div>
-        <div class="col-md-4"><div class="value-card"><span class="value-ico">🎯</span><h5>Müşteri Odaklılık</h5><p>Her kararımızda müşteri menfaatini ön planda tutuyoruz. Sizi en iyi anlayan ekip biziz.</p></div></div>
+      <div class="text-center mb-4"><div class="sec-eyebrow">Değerlerimiz</div><h2 class="sec-h">Temel İlkelerimiz</h2></div>
+      <div class="row g-3">
+        <div class="col-md-4"><div class="val-card"><div style="font-size:1.8rem;margin-bottom:12px">🤝</div><h5 style="font-weight:800;color:var(--navy);margin-bottom:8px">Güven</h5><p style="color:var(--muted);font-size:.85rem;line-height:1.65">Her tavsiyemiz sizin çıkarınız için. Tam dürüstlük ile çalışıyoruz.</p></div></div>
+        <div class="col-md-4"><div class="val-card"><div style="font-size:1.8rem;margin-bottom:12px">🔍</div><h5 style="font-weight:800;color:var(--navy);margin-bottom:8px">Şeffaflık</h5><p style="color:var(--muted);font-size:.85rem;line-height:1.65">Gizli ücret yok, sürpriz yok. Her şey açık ve net.</p></div></div>
+        <div class="col-md-4"><div class="val-card"><div style="font-size:1.8rem;margin-bottom:12px">🎯</div><h5 style="font-weight:800;color:var(--navy);margin-bottom:8px">Müşteri Odaklılık</h5><p style="color:var(--muted);font-size:.85rem;line-height:1.65">Her kararımızda müşteri menfaatini ön planda tutarız.</p></div></div>
       </div>
     </div>
   </section>
 </div>
 
 
-<!-- ════════════ İLETİŞİM ════════════ -->
-<div id="page-iletisim" class="page-section">
+<!-- ════════════════════ CONTACT PAGE ════════════════════ -->
+<div class="page" id="page-contact">
   <div class="page-hero">
     <div class="container">
-      <div class="page-eyebrow" style="background:rgba(37,211,102,.15);border-color:rgba(37,211,102,.3);color:#25d366"><i class="bi bi-headset"></i> 7/24 Destek</div>
+      <div class="pg-badge" style="background:rgba(37,211,102,.15);border-color:rgba(37,211,102,.3);color:#25d366"><i class="bi bi-headset"></i> 7/24 Destek</div>
       <h1>Bize Ulaşın</h1>
-      <p>Sorularınız için hemen iletişime geçin. Mesai saatlerinde 30 dakikada yanıt veriyoruz.</p>
+      <p>Mesai saatlerinde 30 dakikada yanıt veriyoruz.</p>
     </div>
   </div>
-  <section class="py-5 my-2">
+  <section class="py-5">
     <div class="container">
       <div class="row g-5">
         <div class="col-lg-5">
-          <div class="section-eyebrow">İletişim</div>
-          <h2 class="section-title mb-4">Bize Yazın,<br/>Hemen Dönelim</h2>
-          <div class="contact-card"><div class="contact-ico" style="background:rgba(30,45,107,.08);color:var(--navy)"><i class="bi bi-telephone-fill"></i></div><div><h6>Telefon</h6><a href="tel:+902121234567">+90 (212) 123 45 67</a></div></div>
-          <div class="contact-card"><div class="contact-ico" style="background:rgba(232,80,10,.08);color:var(--orange)"><i class="bi bi-envelope-fill"></i></div><div><h6>E-posta</h6><a href="mailto:info@sigortaisterim.com">info@sigortaisterim.com</a></div></div>
-          <div class="contact-card"><div class="contact-ico" style="background:rgba(30,45,107,.08);color:var(--navy)"><i class="bi bi-geo-alt-fill"></i></div><div><h6>Adres</h6><p>Levent Mah. Büyükdere Cad. No:123<br/>Beşiktaş / İstanbul</p></div></div>
-          <div class="contact-card"><div class="contact-ico" style="background:rgba(30,45,107,.08);color:var(--navy)"><i class="bi bi-clock-fill"></i></div><div><h6>Çalışma Saatleri</h6><p>Hafta içi 09:00–18:00<br/>Cumartesi 10:00–14:00</p></div></div>
-          <a href="https://wa.me/905551234567?text=Merhaba%2C%20sigorta%20teklifi%20almak%20istiyorum." target="_blank" class="btn-wa-lg mt-1 mb-4"><i class="bi bi-whatsapp fs-5"></i> WhatsApp ile Yazın</a>
-          <p style="font-size:.83rem;color:var(--muted);margin-bottom:8px">Sosyal Medya</p>
-          <div class="d-flex gap-2"><a href="#" class="social-link"><i class="bi bi-instagram"></i></a><a href="#" class="social-link"><i class="bi bi-linkedin"></i></a><a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a><a href="#" class="social-link"><i class="bi bi-facebook"></i></a></div>
+          <div class="sec-eyebrow">İletişim</div>
+          <h2 class="sec-h mb-4">Hemen<br/>Dönelim</h2>
+          <div class="contact-row"><div class="c-ico"><i class="bi bi-telephone-fill"></i></div><div><h6>Telefon</h6><a href="tel:+902121234567">+90 (212) 123 45 67</a></div></div>
+          <div class="contact-row"><div class="c-ico" style="background:rgba(232,80,10,.09);color:var(--orange)"><i class="bi bi-envelope-fill"></i></div><div><h6>E-posta</h6><a href="mailto:info@sigortaisterim.com">info@sigortaisterim.com</a></div></div>
+          <div class="contact-row"><div class="c-ico"><i class="bi bi-geo-alt-fill"></i></div><div><h6>Adres</h6><p>Levent Mah. Büyükdere Cad. No:123, Beşiktaş / İstanbul</p></div></div>
+          <div class="contact-row"><div class="c-ico"><i class="bi bi-clock-fill"></i></div><div><h6>Çalışma Saatleri</h6><p>Hafta içi 09:00–18:00 · Cumartesi 10:00–14:00</p></div></div>
+          <a href="https://wa.me/905551234567?text=Merhaba%2C%20sigorta%20teklifi%20almak%20istiyorum." target="_blank" class="btn-wa-lg mt-1 mb-4"><i class="bi bi-whatsapp fs-5"></i>WhatsApp ile Yazın</a>
+          <p style="font-size:.78rem;color:var(--muted);margin-bottom:8px">Sosyal Medya</p>
+          <div class="d-flex gap-2"><a href="#" class="social-btn"><i class="bi bi-instagram"></i></a><a href="#" class="social-btn"><i class="bi bi-linkedin"></i></a><a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a><a href="#" class="social-btn"><i class="bi bi-facebook"></i></a></div>
         </div>
         <div class="col-lg-7">
-          <div class="form-card mb-4">
-            <p class="form-card-title">Mesaj Gönderin</p>
-            <p class="form-card-sub">Formu doldurun, en kısa sürede yanıt verelim.</p>
-            <form onsubmit="submitContactForm(event)">
-              <div class="row g-2 mb-3"><div class="col-md-6"><label class="form-label">Ad Soyad</label><input type="text" class="form-control" placeholder="Ad Soyad" required/></div><div class="col-md-6"><label class="form-label">Telefon</label><input type="tel" class="form-control" placeholder="05XX XXX XX XX"/></div></div>
+          <div style="background:#fff;border-radius:20px;padding:28px 24px;box-shadow:var(--sh2);margin-bottom:16px">
+            <div style="font-family:'Merriweather',serif;font-size:1.1rem;color:var(--navy);margin-bottom:4px">Mesaj Gönderin</div>
+            <div style="font-size:.83rem;color:var(--muted);margin-bottom:20px">Formu doldurun, en kısa sürede yanıt verelim.</div>
+            <form onsubmit="submitContact(event)">
+              <div class="row g-2 mb-3">
+                <div class="col-md-6"><label class="form-label">Ad Soyad</label><input type="text" class="form-control" placeholder="Ad Soyad" required/></div>
+                <div class="col-md-6"><label class="form-label">Telefon</label><input type="tel" class="form-control" placeholder="05XX XXX XX XX"/></div>
+              </div>
               <div class="mb-3"><label class="form-label">E-posta</label><input type="email" class="form-control" placeholder="ornek@email.com" required/></div>
               <div class="mb-4"><label class="form-label">Mesajınız</label><textarea class="form-control" rows="4" placeholder="Mesajınızı yazın…" required></textarea></div>
-              <button type="submit" class="btn-submit"><i class="bi bi-send-fill me-2"></i>Mesaj Gönder</button>
-              <div id="contactSuccess"><i class="bi bi-check-circle-fill me-1"></i> Mesajınız iletildi, teşekkürler!</div>
+              <button type="submit" class="btn-submit" style="margin-top:0"><i class="bi bi-send-fill me-2"></i>Mesaj Gönder</button>
+              <div id="cSuccess"><i class="bi bi-check-circle-fill me-1"></i> Mesajınız iletildi, teşekkürler!</div>
             </form>
           </div>
-          <div class="map-ph"><i class="bi bi-map-fill"></i><strong style="color:var(--navy)">Harita Görünümü</strong><span>Google Maps buraya entegre edilecek</span><code style="font-size:.76rem;color:var(--muted)">Levent, Beşiktaş / İstanbul</code></div>
+          <div class="map-ph"><i class="bi bi-map-fill"></i><strong style="color:var(--navy)">Harita</strong><span>Google Maps entegrasyonu buraya eklenecek</span><code style="font-size:.72rem;color:var(--muted)">Levent, Beşiktaş / İstanbul</code></div>
         </div>
       </div>
     </div>
@@ -527,137 +614,122 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,.5);padding:50px 0 26p
 </div>
 
 
-<!-- ── FOOTER ── -->
+<!-- ─── FOOTER ─── -->
 <footer>
   <div class="container">
     <div class="row g-4">
       <div class="col-lg-4">
-        <div class="footer-brand">Sigorta <span>İsterim</span></div>
-        <div class="footer-tagline">Risk almayın !</div>
-        <p style="font-size:.87rem;line-height:1.7;max-width:270px;margin-top:12px">Türkiye'nin güvenilir sigorta danışmanlık platformu. 48+ şirketle en iyi teklifi sizin için buluyoruz.</p>
+        <div class="f-brand">Sigorta <span>İsterim</span></div>
+        <div class="f-tag">Risk almayın !</div>
+        <p style="font-size:.83rem;line-height:1.7;max-width:260px;margin-top:10px">Türkiye'nin güvenilir sigorta danışmanlık platformu. 30+ şirketle en iyi teklifi buluyoruz.</p>
       </div>
-      <div class="col-lg-2 col-6">
-        <h6 style="color:rgba(255,255,255,.75);font-size:.8rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px">Sayfalar</h6>
-        <ul class="footer-links"><li><a onclick="showPage('anasayfa')">Ana Sayfa</a></li><li><a onclick="showPage('hakkimizda')">Biz Kimiz</a></li><li><a onclick="showPage('iletisim')">İletişim</a></li></ul>
-      </div>
-      <div class="col-lg-3 col-6">
-        <h6 style="color:rgba(255,255,255,.75);font-size:.8rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px">Sigorta Türleri</h6>
-        <ul class="footer-links"><li><a href="#">Trafik Sigortası</a></li><li><a href="#">Kasko</a></li><li><a href="#">Sağlık Sigortası</a></li><li><a href="#">DASK</a></li><li><a href="#">Seyahat Sigortası</a></li></ul>
-      </div>
-      <div class="col-lg-3">
-        <h6 style="color:rgba(255,255,255,.75);font-size:.8rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px">İletişim</h6>
-        <ul class="footer-links"><li><a href="tel:+902121234567"><i class="bi bi-telephone me-2"></i>+90 (212) 123 45 67</a></li><li><a href="mailto:info@sigortaisterim.com"><i class="bi bi-envelope me-2"></i>info@sigortaisterim.com</a></li><li><a><i class="bi bi-geo-alt me-2"></i>Beşiktaş / İstanbul</a></li></ul>
-        <div class="d-flex gap-2 mt-3">
-          <a href="#" class="social-link" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="social-link" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)"><i class="bi bi-linkedin"></i></a>
-          <a href="#" class="social-link" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)"><i class="bi bi-twitter-x"></i></a>
-        </div>
-      </div>
+      <div class="col-lg-2 col-6"><div class="f-h">Sayfalar</div><ul class="f-links"><li><a onclick="goPage('home')">Ana Sayfa</a></li><li><a onclick="goPage('about')">Biz Kimiz</a></li><li><a onclick="goPage('contact')">İletişim</a></li></ul></div>
+      <div class="col-lg-3 col-6"><div class="f-h">Sigortalar</div><ul class="f-links"><li><a href="#">Trafik Sigortası</a></li><li><a href="#">Kasko</a></li><li><a href="#">Sağlık Sigortası</a></li><li><a href="#">DASK</a></li><li><a href="#">Seyahat</a></li></ul></div>
+      <div class="col-lg-3"><div class="f-h">İletişim</div><ul class="f-links"><li><a href="tel:+902121234567"><i class="bi bi-telephone me-2"></i>+90 (212) 123 45 67</a></li><li><a href="mailto:info@sigortaisterim.com"><i class="bi bi-envelope me-2"></i>info@sigortaisterim.com</a></li><li><a><i class="bi bi-geo-alt me-2"></i>Beşiktaş / İstanbul</a></li></ul><div class="d-flex gap-2 mt-3"><a href="#" class="social-btn" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.5)"><i class="bi bi-instagram"></i></a><a href="#" class="social-btn" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.5)"><i class="bi bi-linkedin"></i></a><a href="#" class="social-btn" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.5)"><i class="bi bi-twitter-x"></i></a></div></div>
     </div>
-    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div class="f-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
       <span>© 2024 Sigorta İsterim. Tüm hakları saklıdır.</span>
-      <span style="display:flex;align-items:center;gap:6px"><i class="bi bi-lock-fill text-success"></i>SSL Güvenli · Lisanslı Sigorta Aracısı</span>
+      <span style="display:flex;align-items:center;gap:5px"><i class="bi bi-lock-fill text-success"></i>SSL Güvenli · Lisanslı Sigorta Aracısı</span>
     </div>
   </div>
 </footer>
 
-<a href="https://wa.me/905551234567?text=Merhaba%2C%20sigorta%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" class="wa-float"><i class="bi bi-whatsapp"></i></a>
+<a href="https://wa.me/905551234567?text=Merhaba" target="_blank" class="wa-fl"><i class="bi bi-whatsapp"></i></a>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-const typeMap={
-  trafik:{icon:'🚗',name:'Trafik Sigortası'},
-  kasko:{icon:'🛡️',name:'Kasko'},
-  saglik:{icon:'❤️',name:'Sağlık Sigortası'},
-  dask:{icon:'🏠',name:'DASK / Deprem Sigortası'},
-  konut:{icon:'🏡',name:'Konut Sigortası'},
-  seyahat:{icon:'✈️',name:'Seyahat Sigortası'},
+const typeData={
+  trafik:  {icon:'🚗', name:'Trafik Sigortası', df:'arac', kasko:false},
+  kasko:   {icon:'🛡️', name:'Kasko',            df:'arac', kasko:true},
+  saglik:  {icon:'❤️', name:'Sağlık Sigortası', df:'saglik', kasko:false},
+  dask:    {icon:'🏠', name:'DASK (Deprem)',     df:'dask', kasko:false},
+  konut:   {icon:'🏡', name:'Konut Sigortası',   df:'konut', kasko:false},
+  seyahat: {icon:'✈️', name:'Seyahat Sigortası', df:'seyahat', kasko:false},
 };
-let currentType=null;
+let curType=null;
 
-window.addEventListener('scroll',()=>{
-  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);
-});
+function toggleMenu(){
+  document.getElementById('nbDrawer').classList.toggle('open');
+}
 
-function showPage(page){
-  ['anasayfa','hakkimizda','iletisim'].forEach(p=>{
-    document.getElementById('page-'+p).classList.remove('active');
-    const el=document.getElementById('nav-'+p);
-    if(el)el.classList.remove('active');
-  });
-  document.getElementById('page-'+page).classList.add('active');
-  const navEl=document.getElementById('nav-'+page);
-  if(navEl)navEl.classList.add('active');
+function goPage(p){
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.nb-link').forEach(el=>el.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  const nl=document.getElementById('nl-'+p);
+  if(nl)nl.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
-  const navMenu=document.getElementById('navMenu');
-  if(navMenu.classList.contains('show'))bootstrap.Collapse.getInstance(navMenu)?.hide();
+  document.getElementById('nbDrawer').classList.remove('open');
 }
 
-function selectType(type){
-  currentType=type;
-  document.querySelectorAll('.dynamic-form').forEach(f=>f.classList.remove('active'));
-  document.getElementById('form-'+type).classList.add('active');
-  document.getElementById('selIcon').textContent=typeMap[type].icon;
-  document.getElementById('selName').textContent=typeMap[type].name;
-  document.getElementById('step1').style.display='none';
-  document.getElementById('step2').style.display='block';
-  document.getElementById('successMsg').style.display='none';
+function openForm(type){
+  curType=type;
+  const d=typeData[type];
+  // Update tiles
+  document.querySelectorAll('.tile').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tile-'+type).classList.add('active');
+  // Update form header
+  document.getElementById('fp-icon').textContent=d.icon;
+  document.getElementById('fp-title').textContent=d.name;
+  // Hide all dynamic forms
+  document.querySelectorAll('.df').forEach(f=>f.style.display='none');
+  document.getElementById('df-'+d.df).style.display='block';
+  // Kasko extras
+  if(d.df==='arac'){
+    document.getElementById('kasko-extras').style.display=d.kasko?'block':'none';
+  }
+  // Reset success, show submit
+  document.getElementById('successBox').style.display='none';
+  document.getElementById('fp-submit').style.display='block';
+  // Show panel & scroll
+  const panel=document.getElementById('form-panel');
+  panel.classList.add('show');
+  setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'start'}),100);
 }
 
-function goBack(){
-  document.getElementById('step1').style.display='block';
-  document.getElementById('step2').style.display='none';
-  currentType=null;
+function closeForm(){
+  document.getElementById('form-panel').classList.remove('show');
+  document.querySelectorAll('.tile').forEach(t=>t.classList.remove('active'));
+  curType=null;
 }
 
-function scrollToForm(type){
-  showPage('anasayfa');
+function doSubmit(){
+  const ad=document.getElementById('f_ad').value.trim();
+  const tc=document.getElementById('f_tc').value.trim();
+  const tel=document.getElementById('f_tel').value.trim();
+  if(!ad||!tel){alert('Lütfen en azından Ad Soyad ve Telefon alanlarını doldurun.');return;}
+  document.getElementById('fp-submit').style.display='none';
+  document.getElementById('successBox').style.display='block';
   setTimeout(()=>{
-    document.getElementById('form-anchor').scrollIntoView({behavior:'smooth'});
-    setTimeout(()=>selectType(type),400);
-  },100);
-}
-
-function submitForm(){
-  if(!currentType)return;
-  const ad=document.getElementById('f_ad').value;
-  const tel=document.getElementById('f_tel').value;
-  const email=document.getElementById('f_email').value;
-  if(!ad||!tel||!email){alert('Lütfen ad, telefon ve e-posta alanlarını doldurun.');return;}
-  document.getElementById('step2').style.display='none';
-  document.getElementById('step1').style.display='none';
-  document.getElementById('successMsg').style.display='block';
-  setTimeout(()=>{
-    document.getElementById('successMsg').style.display='none';
-    document.getElementById('step1').style.display='block';
-    document.getElementById('f_ad').value='';
-    document.getElementById('f_tel').value='';
-    document.getElementById('f_email').value='';
-    currentType=null;
+    document.getElementById('successBox').style.display='none';
+    document.getElementById('fp-submit').style.display='block';
+    ['f_ad','f_tc','f_tel','f_email','f_dogum'].forEach(id=>document.getElementById(id).value='');
+    closeForm();
   },6000);
 }
 
-function whatsappGonder(){
+function doWhatsapp(){
   const ad=document.getElementById('f_ad').value||'Belirtilmedi';
+  const tc=document.getElementById('f_tc').value||'Belirtilmedi';
   const tel=document.getElementById('f_tel').value||'Belirtilmedi';
-  const tur=currentType?typeMap[currentType].name:'Belirtilmedi';
-  const msg=encodeURIComponent(`Merhaba Sigorta İsterim,\n\n📋 Sigorta Türü: ${tur}\n👤 Ad Soyad: ${ad}\n📞 Telefon: ${tel}\n\nTeklif almak istiyorum.`);
+  const tur=curType?typeData[curType].name:'Belirtilmedi';
+  const msg=encodeURIComponent(`Merhaba Sigorta İsterim!\n\n📋 Sigorta: ${tur}\n👤 Ad: ${ad}\n🪪 TC: ${tc}\n📞 Tel: ${tel}\n\nTeklif almak istiyorum.`);
   window.open('https://wa.me/905551234567?text='+msg,'_blank');
 }
 
-function submitContactForm(e){
+function submitContact(e){
   e.preventDefault();
   const btn=e.target.querySelector('button[type=submit]');
   btn.disabled=true;
   btn.innerHTML='<span class="spinner-border spinner-border-sm me-2"></span>Gönderiliyor…';
   setTimeout(()=>{
     btn.style.display='none';
-    document.getElementById('contactSuccess').style.display='block';
+    document.getElementById('cSuccess').style.display='block';
     e.target.reset();
   },1200);
 }
 
-showPage('anasayfa');
+goPage('home');
 </script>
 </body>
 </html>
